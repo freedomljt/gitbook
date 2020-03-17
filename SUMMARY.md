@@ -9,7 +9,7 @@
 
 ## GitBook
 
-- [发布到Github pages](GitBook/Gitbook.md)
+- [发布到Github pages](About GitBook/Gitbook.md)
 
 ## Markdown
 
