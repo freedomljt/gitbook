@@ -1,18 +1,21 @@
 {
+  "root": "./docs",
   "plugins": [
     "back-to-top-button",
     "collapsible-chapters",
-    "summary",
+    "isummary",
     "-lunr",
     "-search",
     "search-pro",
     "code",
     "splitter",
     "tbfed-pagefooter",
-    "hide-element",
-    "toc2"
+    "hide-element"
   ],
   "pluginsConfig": {
+    "isummary":{
+      "ignorePath": ["assets"]
+    },
     "hide-element": {
       "elements": [".gitbook-link"]
     },

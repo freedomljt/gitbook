@@ -2,6 +2,8 @@
 ## About GitBook
 
 - [发布到Github pages](About GitBook/Gitbook.md)
+- [Plugins]()
+    - [gitbook-plugin-isummary](About GitBook/Plugins/isummary.md)
 - [Gitbook 常用插件](About GitBook/常用插件.md)
 
 ## Frontend

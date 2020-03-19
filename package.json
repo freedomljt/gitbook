@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "gitbook-plugin-auto-write-summary": "^0.0.6"
+  }
+}
