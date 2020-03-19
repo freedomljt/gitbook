@@ -1,7 +1,7 @@
 {
   "plugins": [
     "back-to-top-button",
-    "folding-chapters",
+    "collapsible-chapters",
     "summary",
     "-lunr",
     "-search",
@@ -9,7 +9,8 @@
     "code",
     "splitter",
     "tbfed-pagefooter",
-    "hide-element"
+    "hide-element",
+    "toc2"
   ],
   "pluginsConfig": {
     "hide-element": {
@@ -19,6 +20,10 @@
       "copyright": "Copyright &copy Toobe 2020",
       "modify_label": "修改时间",
       "modify_format": "YYYY-MM-DD HH:mm:ss"
+    },
+    "toc2": {
+      "addClass": true,
+      "className": "toc"
     }
   }
 }
