@@ -7,16 +7,16 @@ require(['gitbook', 'jQuery'], function(gitbook, $) {
   var init = function () {
     // adding the trigger element to each ARTICLES parent and binding the event
     $(ARTICLES)
-      .parents(CHAPTER)
+      .parent(CHAPTER)
       .children('a,span')
-      .prepend(TRIGGER_TEMPLATE)
-      .filter('span')
-      .on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggle($(e.target).closest(CHAPTER));
-      });
-
+      .append(
+        $(TRIGGER_TEMPLATE)
+          .on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggle($(e.target).closest(CHAPTER));
+          })
+      );
     expand(lsItem());
     //expand current selected chapter with it's parents
     var activeChapter = $(CHAPTER + '.active');
@@ -24,7 +24,7 @@ require(['gitbook', 'jQuery'], function(gitbook, $) {
     expand(activeChapter.parents(CHAPTER));
 
 
-  }
+  } 
   var toggle = function ($chapter) {
     if ($chapter.hasClass('expanded')) {
       collapse($chapter);
@@ -36,14 +36,12 @@ require(['gitbook', 'jQuery'], function(gitbook, $) {
     if ($chapter.length && $chapter.hasClass(TOGGLE_CLASSNAME)) {
       $chapter.removeClass(TOGGLE_CLASSNAME);
       lsItem($chapter);
-      $chapter.find(ARTICLES).hide()
     }
   }
   var expand = function ($chapter) {
     if ($chapter.length && !$chapter.hasClass(TOGGLE_CLASSNAME)) {
       $chapter.addClass(TOGGLE_CLASSNAME);
       lsItem($chapter);
-      $chapter.find(ARTICLES).show()
     }
   }
   var lsItem = function () {
@@ -66,5 +64,5 @@ require(['gitbook', 'jQuery'], function(gitbook, $) {
   }
   gitbook.events.bind('page.change', function() {
     init()
-  });
+  }); 
 });
