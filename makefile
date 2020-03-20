@@ -11,7 +11,7 @@ b:
 	gitbook build
 
 s:
-	gitbook build && gitbook serve
+	gitbook serve
 
 gh:
 	gitbook build && gh-pages -d _book

@@ -1,4 +1,7 @@
 {
+  "title": "One book",
+  "author": "Toobe Loong",
+  "description": "A book",
   "root": "./docs",
   "plugins": [
     "back-to-top-button",
@@ -10,11 +13,23 @@
     "code",
     "splitter",
     "tbfed-pagefooter",
-    "hide-element"
+    "hide-element",
+    "insert-logo",
+    "github",
+    "custom-favicon",
+    "theme-default"
   ],
   "pluginsConfig": {
+    "favicon": "//freedomljt.github.io/gitbook/assets/favicon.ico",
+    "github":{
+      "url": "https://github.com/freedomljt"
+    },
     "isummary":{
       "ignorePath": ["assets"]
+    },
+    "insert-logo":{
+      "url": "//freedomljt.github.io/gitbook/assets/logo.jpg",
+      "style": "background:none;width:80px;border-radius:50%;box-shadow:0 0 4px rgba(0,0,0,.4);"
     },
     "hide-element": {
       "elements": [".gitbook-link"]
