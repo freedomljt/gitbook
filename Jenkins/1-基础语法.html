@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>发布到Github pages · One book</title>
+        <title>基础语法 · One book</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -81,8 +81,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../Markdown/1-基础语法.html" />
     
-    <link rel="prev" href="../" />
+    
+    <link rel="prev" href="../Git/1-常用命令.html" />
     
 
     </head>
@@ -126,9 +128,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="Gitbook.html">
+        <li class="chapter " data-level="1.2" data-path="../About GitBook/Gitbook.html">
             
-                <a href="Gitbook.html">
+                <a href="../About GitBook/Gitbook.html">
             
                     
                     发布到Github pages
@@ -153,9 +155,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="Plugins/isummary.html">
+        <li class="chapter " data-level="1.3.1" data-path="../About GitBook/Plugins/isummary.html">
             
-                <a href="Plugins/isummary.html">
+                <a href="../About GitBook/Plugins/isummary.html">
             
                     
                     gitbook-plugin-isummary
@@ -171,9 +173,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="常用插件.html">
+        <li class="chapter " data-level="1.4" data-path="../About GitBook/常用插件.html">
             
-                <a href="常用插件.html">
+                <a href="../About GitBook/常用插件.html">
             
                     
                     Gitbook 常用插件
@@ -336,9 +338,9 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../Jenkins/1-基础语法.html">
+        <li class="chapter active" data-level="7.1" data-path="1-基础语法.html">
             
-                <a href="../Jenkins/1-基础语法.html">
+                <a href="1-基础语法.html">
             
                     
                     基础语法
@@ -511,7 +513,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >发布到Github pages</a>
+        <a href=".." >基础语法</a>
     </h1>
 </div>
 
@@ -526,17 +528,125 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x53D1;&#x5E03;&#x5230;github-pages">&#x53D1;&#x5E03;&#x5230;Github pages</h1>
-<pre><code>touch .gitignore
-echo &quot;_book&quot; &gt;&gt; .gitignore
-git add .gitignore
-git commit -m &quot;Ignore book&quot;
-gitbook build
-cp -r _book/* .
-git add .
-git commit -m &quot;Publish&quot;
-</code></pre><footer class="page-footer"><span class="copyright">Copyright &#xA9; Toobe 2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x4FEE;&#x6539;&#x65F6;&#x95F4;
-2020-03-17 14:29:13
+                                <h1 id="&#x57FA;&#x7840;&#x8BED;&#x6CD5;">&#x57FA;&#x7840;&#x8BED;&#x6CD5;</h1>
+<p><a href="https://www.xncoding.com/2017/03/22/fullstack/jenkins02.html" target="_blank">&#x53C2;&#x8003;&#x6587;&#x6863;</a></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// declarative</span>
+pipeline {
+    agent any &#x2460;
+
+    stages {
+        stage(<span class="hljs-string">&apos;Build&apos;</span>) { &#x2461;
+            steps { &#x2462;
+                sh <span class="hljs-string">&apos;make&apos;</span> &#x2463;
+            }
+        }
+        stage(<span class="hljs-string">&apos;Test&apos;</span>) {
+            steps {
+                sh <span class="hljs-string">&apos;make test&apos;</span>
+                junit <span class="hljs-string">&apos;resports/**/*.xml&apos;</span> &#x2464;
+            }
+        }
+        stage(<span class="hljs-string">&apos;Deploy&apos;</span>) {
+            steps {
+                sh <span class="hljs-string">&apos;make deploy&apos;</span>
+            }
+        }
+    }
+}
+
+<span class="hljs-comment">// script</span>
+node {
+    stage(<span class="hljs-string">&apos;Build&apos;</span>) {
+        sh <span class="hljs-string">&apos;make&apos;</span>
+    }
+    stage(<span class="hljs-string">&apos;Test&apos;</span>) {
+        sh <span class="hljs-string">&apos;make test&apos;</span>
+        junit <span class="hljs-string">&apos;resports/**/*.xml&apos;</span>
+    }
+    stage(<span class="hljs-string">&apos;Deploy&apos;</span>) {
+        sh <span class="hljs-string">&apos;make deploy&apos;</span>
+    }
+}
+</code></pre>
+<ul>
+<li>&#x2460; agent &#x6307;&#x793A;jenkins&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x5668;&#x548C;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x6765;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;pipeline</li>
+<li>&#x2461; stage&#x8868;&#x793A;&#x8FD9;&#x4E2A;pipeline&#x7684;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x9636;&#x6BB5;</li>
+<li>&#x2462; steps&#x8868;&#x793A;&#x5728;&#x8FD9;&#x4E2A;stage&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6B65;&#x9AA4;</li>
+<li>&#x2463; sh &#x6267;&#x884C;&#x6307;&#x5B9A;&#x7684;&#x547D;&#x4EE4;</li>
+<li>&#x2464; junit&#x662F;&#x63D2;&#x4EF6;junit[JUnit plugin]&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x6B65;&#x9AA4;&#xFF0C;&#x7528;&#x6765;&#x6536;&#x96C6;&#x6D4B;&#x8BD5;&#x62A5;&#x544A;</li>
+</ul>
+<h3 id="&#x4F7F;&#x7528;&#x591A;&#x4E2A;agent">&#x4F7F;&#x7528;&#x591A;&#x4E2A;agent</h3>
+<pre><code class="lang-javascript">pipeline {
+    anget none
+    stages {
+        stage(<span class="hljs-string">&apos;Build&apos;</span>) {
+            agent any
+            steps {
+                checkout scm
+                sh <span class="hljs-string">&apos;make&apos;</span>
+            }
+        }
+        stage(<span class="hljs-string">&apos;Test dev&apos;</span>) {
+            agent {
+                label <span class="hljs-string">&apos;worker&apos;</span>
+            }
+            steps {
+                sh <span class="hljs-string">&apos;make&apos;</span>
+            }
+        }
+        stage(<span class="hljs-string">&apos;Test production&apos;</span>) {
+            agent {
+                label <span class="hljs-string">&apos;production&apos;</span>
+            }
+            steps {
+                sh <span class="hljs-string">&apos;make&apos;</span>
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="&#x4E00;&#x4E9B;demo&#x5199;&#x6CD5;">&#x4E00;&#x4E9B;demo&#x5199;&#x6CD5;</h3>
+<p><a href="https://www.theguild.nl/jenkinsfiles-for-beginners-and-masochists/" target="_blank">&#x53C2;&#x8003;&#x6587;&#x6863;</a></p>
+<pre><code class="lang-javascript">def withDockerNetwork(Closure inner) {
+  try {
+    networkId = UUID.randomUUID().toString()
+    sh &quot;docker network create ${networkId}&quot;
+    inner.call(networkId)
+  } finally {
+    sh &quot;docker network rm ${networkId}&quot;
+  }
+}
+
+pipeline {
+  agent none
+
+  stages {
+    stage(&quot;test&quot;) {
+      agent any
+
+      steps {
+        script {
+          def database = docker.build(&quot;database&quot;, &quot;database&quot;)
+          def app = docker.build(&quot;app&quot;, &quot;-f dockerfiles/ci/Dockerfile .&quot;)
+
+          withDockerNetwork{ n -&gt;
+            database.withRun(&quot;--network ${n} --name database&quot;) { c -&gt;
+              app.inside(&quot;&quot;&quot;
+                --network ${n}
+                -e &apos;SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/test&apos;
+              &quot;&quot;&quot;) {
+                sh &quot;mvn verify&quot;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; Toobe 2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x4FEE;&#x6539;&#x65F6;&#x95F4;
+2020-04-10 09:59:26
 </span></footer>
                                 
                                 </section>
@@ -564,10 +674,14 @@ git commit -m &quot;Publish&quot;
 
             
                 
-                <a href="../" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction">
+                <a href="../Git/1-常用命令.html" class="navigation navigation-prev " aria-label="Previous page: Git 常用命令">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="../Markdown/1-基础语法.html" class="navigation navigation-next " aria-label="Next page: 基础语法">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -576,7 +690,7 @@ git commit -m &quot;Publish&quot;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"发布到Github pages","level":"1.2","depth":1,"next":{"title":"Plugins","level":"1.3","depth":1,"ref":"","articles":[{"title":"gitbook-plugin-isummary","level":"1.3.1","depth":2,"path":"About GitBook/Plugins/isummary.md","ref":"About GitBook/Plugins/isummary.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","isummary","-lunr","-search","search-pro","code","splitter","tbfed-pagefooter","hide-element","insert-logo","github","custom-favicon","theme-ismart@1.0.1-pre.3"],"root":"./docs","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Toobe 2020","modify_label":"修改时间","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/freedomljt"},"theme-ismart":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"splitter":{},"search-pro":{},"collapsible-chapters":{},"toc2":{"addClass":true,"className":"toc"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"//freedomljt.github.io/gitbook/assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"isummary":{"ignorePath":["assets"]},"insert-logo":{"style":"background:none;width:80px;border-radius:6px;box-shadow:0 0 4px rgba(0,0,0,.4);","url":"//freedomljt.github.io/gitbook/assets/logo.jpg"}},"theme":"default","author":"Toobe Loong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"One book","gitbook":"*","description":"A book"},"file":{"path":"About GitBook/Gitbook.md","mtime":"2020-03-17T06:29:13.093Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T10:08:08.474Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基础语法","level":"7.1","depth":1,"next":{"title":"基础语法","level":"8.1","depth":1,"path":"Markdown/1-基础语法.md","ref":"Markdown/1-基础语法.md","articles":[]},"previous":{"title":"Git 常用命令","level":"6.1","depth":1,"path":"Git/1-常用命令.md","ref":"Git/1-常用命令.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","isummary","-lunr","-search","search-pro","code","splitter","tbfed-pagefooter","hide-element","insert-logo","github","custom-favicon","theme-ismart@1.0.1-pre.3"],"root":"./docs","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Toobe 2020","modify_label":"修改时间","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/freedomljt"},"theme-ismart":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"splitter":{},"search-pro":{},"collapsible-chapters":{},"toc2":{"addClass":true,"className":"toc"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"//freedomljt.github.io/gitbook/assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"isummary":{"ignorePath":["assets"]},"insert-logo":{"style":"background:none;width:80px;border-radius:6px;box-shadow:0 0 4px rgba(0,0,0,.4);","url":"//freedomljt.github.io/gitbook/assets/logo.jpg"}},"theme":"default","author":"Toobe Loong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"One book","gitbook":"*","description":"A book"},"file":{"path":"Jenkins/1-基础语法.md","mtime":"2020-04-10T01:59:26.599Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T10:08:08.474Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
