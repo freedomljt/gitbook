@@ -17,7 +17,7 @@
     "insert-logo",
     "github",
     "custom-favicon",
-    "theme-default"
+    "theme-ismart@1.0.1-pre.3"
   ],
   "pluginsConfig": {
     "favicon": "//freedomljt.github.io/gitbook/assets/favicon.ico",
@@ -29,7 +29,7 @@
     },
     "insert-logo":{
       "url": "//freedomljt.github.io/gitbook/assets/logo.jpg",
-      "style": "background:none;width:80px;border-radius:50%;box-shadow:0 0 4px rgba(0,0,0,.4);"
+      "style": "background:none;width:80px;border-radius:6px;box-shadow:0 0 4px rgba(0,0,0,.4);"
     },
     "hide-element": {
       "elements": [".gitbook-link"]

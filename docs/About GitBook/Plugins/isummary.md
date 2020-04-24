@@ -13,7 +13,7 @@ book.json
   ],
   "pluginsConfig": {
     "isummary": {
-      "ignorePage": ["assets"]
+      "ignorePath": ["assets"]
     }
   }
 }
