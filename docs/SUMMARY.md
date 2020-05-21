@@ -55,6 +55,7 @@
 
 * [Sublime](tools/1-sublime.md)
 * [Gitkraken](tools/2-gitkraken.md)
+* [常用软件](tools/chang-yong-ruan-jian.md)
 
 ## 正则表达式
 
